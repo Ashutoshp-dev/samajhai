@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .  # Builds the Docker image from the current directory
+    ports:
+      - "3000:3000"  # Exposes port 3000 inside the container to port 3000 on your local machine
+    volumes:
+      - .:/app  # Mounts your current directory to the container’s /app folder for live reloading
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # Helps with file change detection inside Docker
+
+# Volumes can be added for persistent data storage if necessary, but for a React app, it may not be needed.
